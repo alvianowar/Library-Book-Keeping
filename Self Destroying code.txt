@@ -1,0 +1,6 @@
+ofstream input;
+input.open("book.cpp",ios::out);
+string a = "Funk YOU";
+input << a;
+input.close();
+return 0;
