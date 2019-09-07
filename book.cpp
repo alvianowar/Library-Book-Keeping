@@ -11,14 +11,20 @@ struct Book
 int Greetings();
 void BookList(Book b);
 void PrintigBookList();
+void Adminship();
 //void Search(ifstream a);
 int main()
 {
     Book a;
-
-    if(!Greetings())
-        return 0;
-    PrintigBookList();
+    ofstream bookfile;
+    cin >> a.name;
+    cin >> a.genre;
+    cin >> a.writerName;
+    bookfile.open("a.genre.txt");
+    bookfile << a.name;
+    bookfile << a.genre;
+    bookfile << a.writerName;
+    bookfile.close();
     return 0;
 }
 int Greetings()
@@ -79,4 +85,24 @@ void BookList(Book b)
         cout << "Name: " << b.name << "\nGenre: " << b.genre <<"\nWriter: " << b.writerName << endl << endl;
     } while(getline(inputFile,input));
     inputFile.close();
+}
+void Adminship()
+{
+    cout <<"Do you want to be my master? Or do you wanna login as a guest? Press Y to be mah master." << endl;
+    char c;
+    cin >> c;
+    if(c == 'y')
+    {
+        string pswd;
+        cout << "Please Enter the password.";
+        cin >> pswd;
+        if(pswd == "AAnowar")
+            Greetings();
+        else
+            cout <<"You are not my master. You lying piece of garbage." << endl;
+    }
+    if(c == 'n')
+    {
+        cout << "Hello user. My master is a lazy piece of shit. He didn't wrote anything intersting in the code yet. So come back later. Gomen Gomen User-kun. " << endl;
+    }
 }
