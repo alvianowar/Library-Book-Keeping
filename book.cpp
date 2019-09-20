@@ -10,21 +10,12 @@ struct Book
 };
 int Greetings();
 void BookList(Book b);
-void PrintigBookList();
 void Adminship();
+void AddingBook(Book b);
 //void Search(ifstream a);
 int main()
 {
-    Book a;
-    ofstream bookfile;
-    cin >> a.name;
-    cin >> a.genre;
-    cin >> a.writerName;
-    bookfile.open("a.genre.txt");
-    bookfile << a.name;
-    bookfile << a.genre;
-    bookfile << a.writerName;
-    bookfile.close();
+    Adminship();
     return 0;
 }
 int Greetings()
@@ -39,6 +30,22 @@ int Greetings()
         cout << "Yes Oniii-chan." << endl;
         cout << "Untill now you have only written how to print a booklist from a file. So I'll present that to you." << endl;
         cout << "Come back again oniii-chan. We will write more function together." << endl <<  endl;
+        cout << "Enter 1 to Print BookList.\n";
+        cout << "Enter 2 to Print Specific Genre.\n";
+        cout << "Entre 3 if you want to add Book.\n";
+        int in;
+        cin >> in;
+        Book a;
+        switch (in) {
+            case 1:
+                BookList(a);
+                break;
+            case 2:
+                cout << " Idk yet. Shut the fuck up you baka ass Bitch. I have a life." << endl;
+            case 3:
+                AddingBook(a);
+                break;
+        }
     }
     else if(c == 'n')
     {
@@ -56,17 +63,6 @@ int Greetings()
 //{
 //
 //}
-void PrintigBookList()
-{
-    Book a;
-    string command;
-    cout << "Type booklist to print BookList" << endl;
-    cin >> command;
-    if(command == "booklist")
-        BookList(a);
-    else
-        cout << "Oniii-chan you dumb fuck. You can't type a word. I have already written it for you up there." << endl;
-}
 void BookList(Book b)
 {
     ifstream inputFile;
@@ -105,4 +101,21 @@ void Adminship()
     {
         cout << "Hello user. My master is a lazy piece of shit. He didn't wrote anything intersting in the code yet. So come back later. Gomen Gomen User-kun. " << endl;
     }
+}
+void AddingBook(Book a)
+{
+    cin.ignore();
+    ofstream bookfile;
+    cout <<"Enter name of the book: ";
+    getline(cin, a.name);
+    cout <<"\nEnter the genre name: ";
+    getline(cin, a.genre);
+    cout <<"\nEnter the writer name: ";
+    getline(cin, a.writerName);
+    string c = a.genre + ".txt";
+    bookfile.open(c,ios::app);
+    bookfile << a.name +"\n";
+    bookfile << a.genre+"\n";
+    bookfile << a.writerName+"\n";
+    bookfile.close();
 }
